@@ -1,0 +1,45 @@
+@import './color.less';
+
+.scroll() {
+  &::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: #535353;
+  }
+  &::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background: #ededed;
+  }
+}
+
+.shadow() {
+  box-shadow: 0 0px 20px @shadow;
+}
+.marginAuto(@w: 990px, @c: #ffffff, @p: 20px) {
+  width: @w;
+  margin: 0px auto;
+  padding: @p;
+  background-color: @c;
+  height: 100%;
+  // box-sizing: border-box;
+}
+.hiddenText(@a: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @a;
+  -webkit-box-orient: vertical;
+}
+.title() {
+  color: @black;
+  font-size: 16px;
+  margin: 0 0 20px 0;
+  font-weight: bold;
+}

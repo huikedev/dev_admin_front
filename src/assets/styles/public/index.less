@@ -1,0 +1,190 @@
+@import './color.less';
+
+html {
+  background-color: @BackgroundColor;
+  min-width: 1200px;
+}
+
+.center {
+  background-color: @white;
+}
+.ml10 {
+  margin-left: 10px !important;
+}
+.ml130 {
+  margin-left: 130px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.mt24 {
+  margin-top: 24px;
+}
+.mt30 {
+  margin-top: 30px;
+}
+.mb5 {
+  margin-bottom: 5px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.mb20 {
+  margin-bottom: 20px !important;
+}
+.mb25 {
+  margin-bottom: 25px;
+}
+.mr5 {
+  margin-right: 5px;
+}
+.pr10 {
+  padding-right: 10px;
+}
+.pd7 {
+  padding: 7.5px;
+}
+.pd20 {
+  padding: 20px;
+}
+.lineHegith {
+  line-height: 32px;
+}
+.flex {
+  display: flex;
+}
+.flex1 {
+  flex: 1;
+}
+.flex3 {
+  flex: 3;
+}
+.align {
+  align-items: center;
+}
+.between {
+  justify-content: space-between;
+}
+.column {
+  flex-direction: column;
+}
+.flexWrap {
+  flex-wrap: wrap;
+}
+.dottedLine {
+  border: 1px dashed @BorderBase;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    border-color: @c1;
+    color: @c1;
+  }
+}
+.red {
+  color: red;
+}
+.lightGray {
+  color: @color4;
+}
+/**
+* 提示样式
+*/
+.tips {
+  color: @color3;
+}
+.tipsText {
+  color: @emb2;
+}
+
+.warning {
+  color: @warning1;
+}
+.textRed {
+  color: @red;
+}
+.textGreen {
+  color: @green;
+}
+.textOrange {
+  color: @orange;
+}
+
+.textPass {
+  color: #67c23a;
+}
+.textPending {
+  color: #1890ff;
+}
+.textLocking {
+  color: #ffa940;
+}
+.textRejected {
+  color: #f5222d;
+}
+.textWarning {
+  color: #ff976a;
+}
+.textGray {
+  color: @gray;
+}
+.textDesc {
+  color: #8c8c8c;
+}
+//button样式
+
+.btnPass {
+  border: 1px solid #52c41a;
+  background: #52c41a;
+  color: #ffffff;
+}
+.btnWarning {
+  border: 1px solid #ff5722;
+  background: #ff5722;
+  color: #ffffff;
+  &:hover {
+    border: 1px solid #ff5722;
+    background: #ff5722;
+    opacity: 0.8;
+  }
+}
+
+//表格换行变色
+
+.light-row {
+}
+.dark-row {
+  background: #f2f2f2;
+}
+
+//通用文字提示
+
+.commonTips {
+  font-size: 12px;
+  color: @gray;
+}
+
+//通用图片样式
+
+.imageBorder {
+  padding: 2px;
+  border: 1px solid #bfbfbf;
+}
+
+/**字符长度**/
+.hiddenText1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  cursor: pointer;
+}
+
+//***覆盖ant样式****//
+.antHeader {
+  padding: 0;
+}
