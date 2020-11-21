@@ -1,4 +1,6 @@
 import { request } from 'umi';
+import Apis from "@/apis/Apis";
+import {AppResponseType} from "@/common/AppTypes";
 
 export interface LoginParamsType {
   username: string;
@@ -7,9 +9,11 @@ export interface LoginParamsType {
   captcha: string;
   type: string;
 }
-
+export interface LoginSuccess {
+  token:string
+}
 export async function fakeAccountLogin(params: LoginParamsType) {
-  return request<API.LoginStateType>('/api/login/account', {
+  return request<AppResponseType<LoginSuccess>>(Apis.login.login, {
     method: 'POST',
     data: params,
   });

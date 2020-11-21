@@ -18,6 +18,9 @@ export default defineConfig({
     siderWidth: 208,
     ...defaultSettings,
   },
+  request: {
+    dataField: 'data',
+  },
   locale: {
     // default zh-CN
     default: 'zh-CN',

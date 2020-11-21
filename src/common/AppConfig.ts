@@ -1,8 +1,8 @@
 export default class AppConfig{
 
-  public static devHost='http://core.local'
+  public static devHost='http://core.local/'
 
-  public static productionHost='http://core.local'
+  public static productionHost='http://core.local/'
 
   public static tokenName = 'authorization';
 

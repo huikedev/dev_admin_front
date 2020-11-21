@@ -26,6 +26,18 @@ export default class AppUtils{
     return token === 'nil' ? null : token
   }
 
+  public static setToken(tokenString: string):boolean {
+      return this.setStorage(AppConfig.tokenCacheName, tokenString);
+  }
+
+  public static delToken() {
+    return this.delStorage(AppConfig.tokenCacheName);
+  }
+
+  public static logout(){
+    return AppUtils.delToken()
+  }
+
   public static getStorage(name: string): string {
     try {
       const data: string | null = localStorage.getItem(

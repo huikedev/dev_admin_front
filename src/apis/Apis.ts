@@ -7,4 +7,12 @@ export default class Apis{
   public static generate = {
     modelList:'generate/model/index'
   }
+
+  public static user = {
+    userInfo:'user/getUserInfo'
+  }
+
+  public static login = {
+    login:'login/index'
+  }
 }

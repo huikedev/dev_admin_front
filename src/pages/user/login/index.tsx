@@ -15,6 +15,7 @@ import Footer from '@/components/Footer';
 import { fakeAccountLogin, getFakeCaptcha, LoginParamsType } from '@/services/login';
 
 import styles from './index.less';
+import AppUtils from "@/utils/AppUtils";
 
 const LoginMessage: React.FC<{
   content: string;
@@ -48,14 +49,15 @@ const Login: React.FC<{}> = () => {
     setSubmitting(true);
     try {
       // 登录
-      const msg = await fakeAccountLogin({ ...values, type });
-      if (msg.status === 'ok') {
+      const res = await fakeAccountLogin({ ...values, type });
+      if (res.success) {
+        AppUtils.setToken(res.data.token)
         message.success('登录成功！');
         goto();
         return;
       }
       // 如果失败去设置用户错误信息
-      setUserLoginState(msg);
+      // setUserLoginState(res.errorMessage);
     } catch (error) {
       message.error('登录失败，请重试！');
     }
