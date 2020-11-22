@@ -1,7 +1,9 @@
+import {AppPaginator} from "@/common/AppTypes";
+
 export const AppPaginatorInit:AppPaginator ={
   total:0,
-  limit:0,
-  page:0,
+  pageSize:10,
+  current:1,
   last:0,
   list:[],
 }

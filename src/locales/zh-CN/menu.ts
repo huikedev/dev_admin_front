@@ -51,6 +51,7 @@ export default {
   'menu.editor.koni': '拓扑编辑器',
   'menu.generate':'代码生成',
   'menu.generate.model':'模型管理',
-  'menu.generate.model.maker':'模型生成',
-  'menu.generate.model.list':'模型列表',
+  'menu.generate.model.create':'模型生成',
+  'menu.generate.facade':'门面管理',
+  'menu.generate.facade.create':'门面生成',
 };

@@ -31,8 +31,7 @@ const codeMessage: {
 const errorHandler = (error: ResponseError) => {
   notification.destroy();
   if (error.name === 'BizError') {
-    if (error.data.errorCode <= -9900) {
-      console.log(54145)
+    if (error.data.errorCode <= -99900) {
       AppUtils.logout();
       notification.error({
         message: `系统提示`,
@@ -63,7 +62,6 @@ const errorHandler = (error: ResponseError) => {
     return { success: false, errorMessage: '请求超时或网络不可用' };
   }
 
-  console.log(error);
   const { response } = error;
   const errorMsg = codeMessage[response.status] || response.statusText;
   const { status } = response;

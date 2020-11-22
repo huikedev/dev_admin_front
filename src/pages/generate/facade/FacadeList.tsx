@@ -5,13 +5,16 @@ import {AppClassState, AppPaginator} from "@/common/AppTypes";
 import { GenerateRequest } from '@/services/index'
 import {PageLoading,PageException,SmartTime} from "@/huikedev";
 import {PageContainer} from "@ant-design/pro-layout";
-import { Table } from 'antd'
+import {Button, Space, Table} from 'antd'
+import { history } from 'umi'
+import PathName from "@/common/PathName";
+import AppUtils from "@/utils/AppUtils";
 
 interface ModelListState extends AppClassState<AppPaginator>{
 
 }
 
-export default class ModelList extends React.Component<any, ModelListState>{
+export default class FacadeList extends React.Component<any, ModelListState>{
 
   state = {
     isLoading:true,
@@ -21,50 +24,34 @@ export default class ModelList extends React.Component<any, ModelListState>{
     data:AppPaginatorInit
   }
 
-  private columns: ColumnsType<ModelListItem> = [
+  private columns: ColumnsType<FacadeListItem> = [
     {
       title: 'ID',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: '模型名称',
-      dataIndex: 'model_name',
-      key: 'model_name',
+      title: '动态类',
+      dataIndex: 'origin_class',
+      key: 'origin_class',
     },
     {
-      title: '模型路径',
-      dataIndex: 'model_path',
-      key: 'model_path',
+      title: '门面类',
+      dataIndex: 'facade_class',
+      key: 'facade_class',
     },
     {
-      title: '命名空间',
-      dataIndex: 'model_namespace',
-      key: 'model_namespace',
-    },
-    {
-      title: '模型字段',
-      dataIndex: 'model_fields',
-      key: 'model_fields',
+      title: '门面类型',
+      dataIndex: 'type_id',
+      key: 'type_id',
       render:(res:any,record)=>{
-        return <span>{record.model_fields.length}个</span>
+        return <span>{AppUtils.getFacadeTypeTitle(record.type_id)}</span>
       }
     },
     {
-      title: '模型属性',
-      dataIndex: 'model_property',
-      key: 'model_property',
-      render:(res:any,record)=>{
-        return <span>{record.model_fields.length}个</span>
-      }
-    },
-    {
-      title: '模型关联',
-      dataIndex: 'model_relations',
-      key: 'model_relations',
-      render:(res:any,record)=>{
-        return <span>{record.model_relations.length}个</span>
-      }
+      title: '更新次数',
+      dataIndex: 'update_times',
+      key: 'update_times',
     },
     {
       title: '更新时间',
@@ -84,7 +71,7 @@ export default class ModelList extends React.Component<any, ModelListState>{
     },
   ]
 
-  async componentWillUnmount() {
+  async componentDidMount() {
     await this.getModelList()
   }
 
@@ -97,9 +84,10 @@ export default class ModelList extends React.Component<any, ModelListState>{
     })
     const { data } = this.state
     const {pageSize,current} = data
-    const res = await GenerateRequest.getModelList({
-      pageSize,current
+    const res = await GenerateRequest.facadeList({
+      limit:pageSize,page:current
     })
+    console.log(res)
     if(res.success){
       this.setState({
         isLoading:false,
@@ -160,7 +148,11 @@ export default class ModelList extends React.Component<any, ModelListState>{
   render() {
     return (
       <PageContainer>
-        {this.buildContent()}
+        <Space direction="vertical" size={20} style={{width:'100%'}}>
+          <Button type="primary" onClick={()=>history.push(PathName.generate.create)}>生成门面</Button>
+          {this.buildContent()}
+        </Space>
+
       </PageContainer>
     );
   }

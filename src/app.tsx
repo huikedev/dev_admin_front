@@ -1,13 +1,12 @@
 import React from 'react';
-import { BasicLayoutProps, Settings as LayoutSettings, PageLoading } from '@ant-design/pro-layout';
-import { notification } from 'antd';
-import { history, RequestConfig } from 'umi';
+import {BasicLayoutProps, PageLoading, Settings as LayoutSettings} from '@ant-design/pro-layout';
+import {history, RequestConfig} from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
-import { ResponseError } from 'umi-request';
-import { queryCurrent } from './services/user';
+import {queryCurrent} from './services/user';
 import defaultSettings from '../config/defaultSettings';
-import { request as appRequestConfig } from '@/common/request'
+import {request as appRequestConfig} from '@/common/request'
+import AppUtils from "@/utils/AppUtils";
 
 /**
  * 获取用户信息比较慢的时候会展示一个 loading
@@ -23,8 +22,16 @@ export async function getInitialState(): Promise<{
 }> {
   const fetchUserInfo = async () => {
     try {
-      const currentUser = await queryCurrent();
-      return currentUser;
+      const res = await queryCurrent();
+      if(res.success){
+        return res.data
+      }
+        AppUtils.logout();
+        history.push('/user/login');
+        // eslint-disable-next-line consistent-return
+        return ;
+
+
     } catch (error) {
       history.push('/user/login');
     }

@@ -20,7 +20,7 @@
     path: '/admin',
     name: 'admin',
     icon: 'crown',
-    access: 'canAdmin',
+    //access: 'canAdmin',
     component: './Admin',
     routes: [
       {
@@ -41,25 +41,31 @@
     path: '/generate',
     name: 'generate',
     icon: 'RobotOutlined',
-    access: 'canAdmin',
+    //access: 'canAdmin',
     component: '../layouts/index',
     routes: [
       {
         path: '/generate/model',
         name: 'model',
-        component: '../layouts/index',
+        component: './generate/model/ModelList',
         routes:[
           {
-            path: '/generate/model/list',
-            name: 'list',
-            component: './generate/model/ModelList',
-          },
-          {
-            path: '/generate/model/maker',
-            name: 'maker',
-            component: './generate/model/ModelMaker',
+            path: '/generate/model/create',
+            name: 'create',
+            component: './generate/model/ModelCreate',
           },
         ]
+      },
+      {
+        path: '/generate/facade',
+        name: 'facade',
+        component: './generate/facade/FacadeList',
+      },
+      {
+        path: '/generate/facade/create',
+        name: 'facade.create',
+        hideInMenu:true,
+        component: './generate/facade/FacadeCreate',
       },
 
     ],

@@ -5,7 +5,9 @@ export default class Apis{
   }
 
   public static generate = {
-    modelList:'generate/model/index'
+    modelList:'generate/model/index',
+    facadeCreate:'generate/facade/create',
+    facadeList:'generate/facade/index'
   }
 
   public static user = {
@@ -15,4 +17,5 @@ export default class Apis{
   public static login = {
     login:'login/index'
   }
+
 }

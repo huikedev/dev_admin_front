@@ -1,6 +1,8 @@
 import AppConfig from "@/common/AppConfig";
 import { format } from 'timeago.js';
 import moment from "moment";
+import lodash from 'lodash'
+import {facadeOption} from "@/common/OptionConfig";
 
 export default class AppUtils{
 
@@ -99,5 +101,10 @@ export default class AppUtils{
       default:
         return moment(unixTimeStamp * 1000).format(dateFormat);
     }
+  }
+
+  public static getFacadeTypeTitle(id:number){
+    const index:number = lodash.findIndex(facadeOption,{id})
+    return index === -1 ? '未知' :facadeOption[index].title
   }
 }

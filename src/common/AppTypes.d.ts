@@ -5,12 +5,12 @@ interface AppClassState<Data = unknown>{
   data:Data
 }
 
-interface AppPaginator<ListType = unknown>{
+interface AppPaginator<ListTypeItem = any>{
   total:number;
-  limit:number;
-  page:number;
+  pageSize:number;
+  current:number;
   last:number;
-  list:ListType | [];
+  list:ListTypeItem[] | [];
 }
 
 export interface AppResponseType<DataType = unknown> {
