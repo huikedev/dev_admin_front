@@ -66,6 +66,17 @@
         hideInMenu:true,
         component: './generate/facade/FacadeCreate',
       },
+      {
+        path: '/generate/logic',
+        name: 'logic',
+        component: './generate/logic/LogicList',
+      },
+      {
+        path: '/generate/logic/create',
+        name: 'logic.create',
+        hideInMenu:true,
+        component: './generate/logic/LogicCreate',
+      },
 
     ],
   },

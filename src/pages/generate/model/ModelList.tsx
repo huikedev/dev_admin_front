@@ -99,7 +99,7 @@ export default class ModelList extends React.Component<any, ModelListState>{
     })
     const { data } = this.state
     const {pageSize,current} = data
-    const res = await GenerateRequest.getModelList({
+    const res = await GenerateRequest.modelList({
       pageSize,current
     })
     if(res.success){

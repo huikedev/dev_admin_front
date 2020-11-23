@@ -54,4 +54,6 @@ export default {
   'menu.generate.model.create':'模型生成',
   'menu.generate.facade':'门面管理',
   'menu.generate.facade.create':'门面生成',
+  'menu.generate.logic':'逻辑管理',
+  'menu.generate.logic.create':'逻辑生成',
 };

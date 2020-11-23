@@ -51,12 +51,11 @@ declare namespace API {
   interface ModelFieldProperty{
     name:string;
     type:string;
-    isUnsigned?:boolean;
     length:number;
     decimal?:number;
     indexType?:string;
-    isNullable?:boolean;
     defaultValue?:any;
+    options?:string[];
     fieldRemark?:string;
   }
 
