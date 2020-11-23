@@ -3,3 +3,56 @@ export const facadeOption = [
   {id:2,title:'公共服务门面'},
   {id:3,title:'三方服务门面'}
 ]
+
+export const modelEvents = [
+{name:'after_read',title:'查询后'},
+  {name:'before_insert',title:'新增前'},
+  {name:'after_insert',title:'新增后'},
+  {name:'before_update',title:'更新前'},
+  {name:'after_update',title:'更新后'},
+  {name:'before_write',title:'写入前'},
+  {name:'after_write',title:'写入后'},
+  {name:'before_delete',title:'删除前'},
+  {name:'after_delete',title:'删除后'},
+  {name:'before_restore',title:'恢复前'},
+  {name:'after_restore',title:'恢复后'},
+]
+
+export const modelFieldTypes = [
+  {name:'number',title:'数字',children:[
+      {name:'tinyInteger',title:'tinyInteger'},
+      {name:'smallInteger',title:'smallInteger'},
+      {name:'mediumInteger',title:'mediumInteger'},
+      {name:'integer',title:'integer'},
+      {name:'bigInteger',title:'bigInteger'},
+      {name:'float',title:'float'},
+      {name:'decimal',title:'decimal'},
+      {name:'boolean',title:'boolean'},
+    ]},
+  {name:'dateTime',title:'日期与时间',children:[
+      {name:'date',title:'date'},
+      {name:'time',title:'time'},
+      {name:'dateTime',title:'dateTime'},
+      {name:'timestamp',title:'timestamp'}
+    ]},
+  {name:'string',title:'文本',children:[
+      {name:'char',title:'char'},
+      {name:'string',title:'string'},
+      {name:'mediumText',title:'mediumText'},
+      {name:'text',title:'text'},
+      {name:'longText',title:'longText'},
+      {name:'binary',title:'binary'},
+      {name:'enum',title:'enum'},
+      {name:'uuid',title:'uuid'},
+    ]},
+  {name:'json',title:'JSON',children:[
+      {name:'json',title:'json'},
+      {name:'jsonb',title:'jsonb'}
+    ]}
+]
+
+export const modelFiledIndexType=[
+  {name:'unique',title:'unique'},
+  {name:'normal',title:'normal'},
+  {name:'fulltext',title:'fulltext'}
+]

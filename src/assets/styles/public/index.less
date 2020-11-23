@@ -1,10 +1,13 @@
 @import './color.less';
 
 html {
-  background-color: @BackgroundColor;
   min-width: 1200px;
+  background-color: @BackgroundColor;
 }
-
+.pageContent {
+  padding: 20px;
+  background-color: #ffffff;
+}
 .center {
   background-color: @white;
 }
@@ -89,6 +92,11 @@ html {
 }
 .lightGray {
   color: @color4;
+}
+// flex布局样式
+.flexEnd{
+  display: flex;
+  justify-content: end;
 }
 /**
 * 提示样式

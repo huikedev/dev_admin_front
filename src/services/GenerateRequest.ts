@@ -4,10 +4,14 @@ import {AppResponseType} from "@/common/AppTypes";
 
 export default class GenerateRequest{
 
-  public static async getModelList(params:object):Promise<AppResponseType<API.ModelListItem[]>>{
+  public static async modelList(params:object):Promise<AppResponseType<API.ModelListItem[]>>{
     return request(Apis.generate.modelList, {
       params,
     });
+  }
+
+  public static async modelSimpleList():Promise<AppResponseType<API.ModelSimpleListItem[]>>{
+    return request(Apis.generate.modelSimpleList);
   }
 
   public static async facadeCreate(params:object):Promise<AppResponseType>{

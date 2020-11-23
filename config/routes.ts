@@ -48,13 +48,12 @@
         path: '/generate/model',
         name: 'model',
         component: './generate/model/ModelList',
-        routes:[
-          {
-            path: '/generate/model/create',
-            name: 'create',
-            component: './generate/model/ModelCreate',
-          },
-        ]
+      },
+      {
+        path: '/generate/model/create',
+        name: 'model.create',
+        hideInMenu:true,
+        component: './generate/model/ModelCreate',
       },
       {
         path: '/generate/facade',

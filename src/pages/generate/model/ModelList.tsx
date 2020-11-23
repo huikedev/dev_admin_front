@@ -5,7 +5,9 @@ import {AppClassState, AppPaginator} from "@/common/AppTypes";
 import { GenerateRequest } from '@/services/index'
 import {PageLoading,PageException,SmartTime} from "@/huikedev";
 import {PageContainer} from "@ant-design/pro-layout";
-import { Table } from 'antd'
+import {Button, Space, Table} from 'antd'
+import {history} from "@@/core/history";
+import PathName from "@/common/PathName";
 
 interface ModelListState extends AppClassState<AppPaginator>{
 
@@ -21,7 +23,7 @@ export default class ModelList extends React.Component<any, ModelListState>{
     data:AppPaginatorInit
   }
 
-  private columns: ColumnsType<ModelListItem> = [
+  private columns: ColumnsType<API.ModelListItem> = [
     {
       title: 'ID',
       dataIndex: 'id',
@@ -84,7 +86,7 @@ export default class ModelList extends React.Component<any, ModelListState>{
     },
   ]
 
-  async componentWillUnmount() {
+  async componentDidMount() {
     await this.getModelList()
   }
 
@@ -160,7 +162,10 @@ export default class ModelList extends React.Component<any, ModelListState>{
   render() {
     return (
       <PageContainer>
+      <Space direction="vertical" size={20} style={{width:'100%'}}>
+        <Button type="primary" onClick={()=>history.push(PathName.generate.modelCreate)}>生成模型</Button>
         {this.buildContent()}
+      </Space>
       </PageContainer>
     );
   }

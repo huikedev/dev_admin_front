@@ -24,7 +24,7 @@ export default class FacadeList extends React.Component<any, ModelListState>{
     data:AppPaginatorInit
   }
 
-  private columns: ColumnsType<FacadeListItem> = [
+  private columns: ColumnsType<API.FacadeListItem> = [
     {
       title: 'ID',
       dataIndex: 'id',
@@ -87,7 +87,6 @@ export default class FacadeList extends React.Component<any, ModelListState>{
     const res = await GenerateRequest.facadeList({
       limit:pageSize,page:current
     })
-    console.log(res)
     if(res.success){
       this.setState({
         isLoading:false,
@@ -114,7 +113,6 @@ export default class FacadeList extends React.Component<any, ModelListState>{
     return (
       <Table
         loading={isLoading}
-        style={{ marginTop: 20 }}
         columns={this.columns}
         rowClassName={(record, index) => {
           let className = 'light-row';
@@ -149,7 +147,7 @@ export default class FacadeList extends React.Component<any, ModelListState>{
     return (
       <PageContainer>
         <Space direction="vertical" size={20} style={{width:'100%'}}>
-          <Button type="primary" onClick={()=>history.push(PathName.generate.create)}>生成门面</Button>
+          <Button type="primary" onClick={()=>history.push(PathName.generate.facadeCreate)}>生成门面</Button>
           {this.buildContent()}
         </Space>
 
