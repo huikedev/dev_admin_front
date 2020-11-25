@@ -14,6 +14,13 @@ export default class GenerateRequest{
     return request(Apis.generate.modelSimpleList);
   }
 
+  public static async modelCreate(params:object):Promise<AppResponseType>{
+    return request(Apis.generate.modelCreate, {
+      method:'post',
+      data:params
+    });
+  }
+
   public static async facadeCreate(params:object):Promise<AppResponseType>{
     return request(Apis.generate.facadeCreate, {
       method:'post',

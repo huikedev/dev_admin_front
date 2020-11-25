@@ -63,7 +63,7 @@ const ModelFieldsForm : React.FC<ModelFieldsFormProps> = props => {
             name={[field.name, 'name']}
             fieldKey={[field.fieldKey, 'name']}
           >
-            <Input placeholder="字段名" disabled={isPk}/>
+            <Input placeholder="字段名" disabled={isPk || append===null}/>
           </Form.Item>
         </Col>
         <Col span={3}>
@@ -72,7 +72,7 @@ const ModelFieldsForm : React.FC<ModelFieldsFormProps> = props => {
             name={[field.name, 'type']}
             fieldKey={[field.fieldKey, 'type']}
           >
-            <Select placeholder="字段类型" style={{width: '100%'}}>
+            <Select placeholder="字段类型" style={{width: '100%'}} disabled={isPk || append===null}>
               {modelFieldTypes.map((group) => {
                 return (<Select.OptGroup key={group.name} label={group.title}>
                   {group.children.map((fieldType) => {
@@ -90,7 +90,7 @@ const ModelFieldsForm : React.FC<ModelFieldsFormProps> = props => {
             name={[field.name, 'length']}
             fieldKey={[field.fieldKey, 'length']}
           >
-            <Input placeholder="字段长度"/>
+            <Input placeholder="字段长度" disabled={isPk || append===null}/>
           </Form.Item>
         </Col>
         <Col span={1}>
@@ -99,17 +99,17 @@ const ModelFieldsForm : React.FC<ModelFieldsFormProps> = props => {
             name={[field.name, 'decimal']}
             fieldKey={[field.fieldKey, 'decimal']}
           >
-            <Input placeholder="小数位长度"/>
+            <Input placeholder="小数位长度" disabled={isPk || append===null}/>
           </Form.Item>
         </Col>
         <Col span={3}>
           <Form.Item
             {...field}
-            name={[field.name, 'indexType']}
-            fieldKey={[field.fieldKey, 'indexType']}
+            name={[field.name, 'index_type']}
+            fieldKey={[field.fieldKey, 'index_type']}
 
           >
-            <Select placeholder="索引类型" style={{width: '100%'}} disabled={isPk}>
+            <Select placeholder="索引类型" style={{width: '100%'}} disabled={isPk || append===null}>
               {modelFiledIndexType.map((indexType) => {
                 return (<Select.Option key={indexType.name}
                                        value={indexType.name}>{indexType.title}</Select.Option>)
@@ -120,19 +120,19 @@ const ModelFieldsForm : React.FC<ModelFieldsFormProps> = props => {
         <Col span={3}>
           <Form.Item
             {...field}
-            name={[field.name, 'defaultValue']}
-            fieldKey={[field.fieldKey, 'defaultValue']}
+            name={[field.name, 'default_value']}
+            fieldKey={[field.fieldKey, 'default_value']}
           >
-            <Input placeholder="默认值" disabled={isPk}/>
+            <Input placeholder="默认值" disabled={isPk || append===null}/>
           </Form.Item>
         </Col>
         <Col span={3}>
           <Form.Item
             {...field}
-            name={[field.name, 'fieldRemark']}
-            fieldKey={[field.fieldKey, 'fieldRemark']}
+            name={[field.name, 'field_remark']}
+            fieldKey={[field.fieldKey, 'field_remark']}
           >
-            <Input placeholder="字段注释"/>
+            <Input placeholder="字段注释" disabled={isPk || append===null}/>
           </Form.Item>
         </Col>
         <Col span={5}>
@@ -149,7 +149,7 @@ const ModelFieldsForm : React.FC<ModelFieldsFormProps> = props => {
               null
             }
             <Checkbox value="nullable" disabled={append===null}>NULL</Checkbox>
-            <Checkbox value="unsigned">非负</Checkbox>
+            <Checkbox value="unsigned" disabled={isPk || append===null}>非负</Checkbox>
 
           </Checkbox.Group>
           </Form.Item>
@@ -237,8 +237,17 @@ const ModelFieldsForm : React.FC<ModelFieldsFormProps> = props => {
             :
             null
           }
-          <Form.Item name="isJsonAssoc">
+          <Form.Item name="is_json_assoc" valuePropName={data.is_json_assoc?'checked':''}>
             <Checkbox>JsonAssoc(如果有json字段开启此项会将Json数据转换为Array)</Checkbox>
+          </Form.Item>
+          <Form.Item name="is_create_model" valuePropName={data.is_create_model?'checked':''}>
+            <Checkbox>创建ThinkPhp Model</Checkbox>
+          </Form.Item>
+          <Form.Item name="is_create_migration"  valuePropName={data.is_create_migration?'checked':''}>
+            <Checkbox>创建数据库迁移文件</Checkbox>
+          </Form.Item>
+          <Form.Item name="is_create_table" valuePropName={data.is_create_table?'checked':''}>
+            <Checkbox>创建数据表</Checkbox>
           </Form.Item>
           <Form.Item
             {...tailLayout}

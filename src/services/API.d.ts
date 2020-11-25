@@ -53,10 +53,10 @@ declare namespace API {
     type:string;
     length:number;
     decimal?:number;
-    indexType?:string;
-    defaultValue?:any;
+    index_type?:string;
+    default_value?:any;
     options?:string[];
-    fieldRemark?:string;
+    field_remark?:string;
   }
 
   interface FacadeListItem{

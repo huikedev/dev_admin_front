@@ -7,6 +7,7 @@ export default class Apis{
   public static generate = {
     modelList:'generate/model/index',
     modelSimpleList:'generate/model/simpleList',
+    modelCreate:'generate/model/create',
     facadeCreate:'generate/facade/create',
     facadeList:'generate/facade/index'
   }
