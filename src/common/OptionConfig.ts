@@ -24,13 +24,28 @@ export const modelFieldTypes = [
     title: '数字',
     children: [
       { name: 'tinyInteger', title: 'tinyInteger' },
-      { name: 'smallInteger', title: 'smallInteger' },
-      { name: 'mediumInteger', title: 'mediumInteger' },
       { name: 'integer', title: 'integer' },
       { name: 'bigInteger', title: 'bigInteger' },
       { name: 'float', title: 'float' },
       { name: 'decimal', title: 'decimal' },
-      { name: 'boolean', title: 'boolean' },
+    ],
+  },
+  {
+    name: 'string',
+    title: '文本',
+    children: [
+      { name: 'char', title: 'char' },
+      { name: 'string', title: 'string(varchar)' },
+      { name: 'mediumText', title: 'mediumText' },
+      { name: 'text', title: 'text' },
+      { name: 'longText', title: 'longText' },
+    ],
+  },
+  {
+    name: 'json',
+    title: 'JSON',
+    children: [
+      { name: 'json', title: 'json' },
     ],
   },
   {
@@ -43,28 +58,7 @@ export const modelFieldTypes = [
       { name: 'timestamp', title: 'timestamp' },
     ],
   },
-  {
-    name: 'string',
-    title: '文本',
-    children: [
-      { name: 'char', title: 'char' },
-      { name: 'string', title: 'string' },
-      { name: 'mediumText', title: 'mediumText' },
-      { name: 'text', title: 'text' },
-      { name: 'longText', title: 'longText' },
-      { name: 'binary', title: 'binary' },
-      { name: 'enum', title: 'enum' },
-      { name: 'uuid', title: 'uuid' },
-    ],
-  },
-  {
-    name: 'json',
-    title: 'JSON',
-    children: [
-      { name: 'json', title: 'json' },
-      { name: 'jsonb', title: 'jsonb' },
-    ],
-  },
+
 ];
 
 export const modelFiledIndexType = [
