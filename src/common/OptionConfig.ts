@@ -52,6 +52,7 @@ export const modelFieldTypes = [
 ]
 
 export const modelFiledIndexType=[
+  {name:'none',title:'无索引'},
   {name:'unique',title:'unique'},
   {name:'normal',title:'normal'},
   {name:'fulltext',title:'fulltext'}
