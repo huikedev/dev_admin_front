@@ -1,5 +1,5 @@
 import {ResponseError,RequestOptionsInit} from "umi-request";
-import {notification} from "antd";
+import {message, Modal, notification} from "antd";
 import { history, RequestConfig } from 'umi';
 import { baseUri } from "@/common/AppConfig";
 import AppUtils from "@/utils/AppUtils";
@@ -24,14 +24,79 @@ const codeMessage: {
   504: '网关超时。',
 };
 
+const showNotice = (showType:number,title:string='系统提示',msg:string)=>{
+  switch (showType){
+    case 0:
+      break;
+    case 1:
+      message.destroy();
+      message.warning(msg)
+      break;
+    case 2:
+      message.destroy();
+      message.error(msg)
+      break;
+    case 3:
+      message.destroy();
+      message.success(msg)
+      break;
+    case 4:
+      notification.error({
+        message:title,
+        description:msg
+      })
+      break;
+    case 5:
+      notification.warning({
+        message:title,
+        description:msg
+      })
+      break;
+    case 6:
+      notification.success({
+        duration:3,
+        message:title,
+        description:msg
+      })
+      break;
+    case 7:
+      Modal.destroyAll();
+      Modal.error({
+        title,
+        content:msg
+      })
+      break;
+    case 8:
+      Modal.destroyAll();
+      Modal.warning({
+        title,
+        content:msg
+      })
+      break;
+    case 9:
+      Modal.destroyAll();
+      Modal.success({
+        title,
+        content:msg
+      })
+      break;
+    default:
+      notification.destroy();
+      notification.info({
+        message:title,
+        description:msg
+      })
+  }
+}
+
 
 /**
  * 异常处理程序
  */
 const errorHandler = (error: ResponseError) => {
-  notification.destroy();
   if (error.name === 'BizError') {
     if (error.data.errorCode <= -99900) {
+      notification.destroy()
       AppUtils.logout();
       notification.error({
         message: `系统提示`,
@@ -39,37 +104,25 @@ const errorHandler = (error: ResponseError) => {
         duration: 3,
       });
       history.push('/user/login');
-      return { success: false, errorMessage: '登录状态验证错误，请重新登录' };
+      throw error
     }
-    notification.error({
-      message: `系统错误：[ ${error.data.errorCode}]`,
-      description: error.data.errorMessage ?? '未返回错误信息',
-      duration: 5,
-    });
     const tips: string =
       `[${
-      error.data.errorCode
+        error.data.errorCode
       }]${
-      error.data.errorMessage ?? '未返回错误信息'}`;
-    return { success: false, errorMessage: tips };
+        error.data.errorMessage ?? '未返回错误信息'}`;
+    showNotice(error.data.showType,`系统错误`,tips)
+    throw error
   }
 
   if (error.name === 'RequestError') {
-    notification.error({
-      message: `请求出错`,
-      description: '请求超时或网络不可用',
-    });
-    return { success: false, errorMessage: '请求超时或网络不可用' };
+    showNotice(7,'请求出错','请求超时或网络不可用')
+    throw error
   }
-
   const { response } = error;
-  const errorMsg = codeMessage[response.status] || response.statusText;
   const { status } = response;
-  notification.error({
-    message: `请求错误 ${status}`,
-    description: errorMsg,
-    duration: 0,
-  });
+  showNotice(7,`请求错误 ${status}`,`系统请求错误，错误码:[${  status  }]`)
+
   return { success: false, errorMessage: `系统错误，错误码:[${  status  }]` };
 };
 
@@ -89,5 +142,16 @@ export const request: RequestConfig = {
       }
     },
   ],
+  responseInterceptors:[
+    async response => {
+      const data = await response.clone().json();
+      if(data.success === false){
+        return response;
+      }
+      showNotice(Number(data.showType),'操作提示',String(data.errorMessage))
+      return response;
+    }
+  ],
+
   errorHandler,
 };

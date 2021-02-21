@@ -1,9 +1,10 @@
 import React from 'react';
-import { Result } from 'antd';
+import {Card, Result} from 'antd';
 import { ResultProps } from 'antd/lib/result';
+import {PageContainer} from "@ant-design/pro-layout";
+import {useModel} from "@@/plugin-model/useModel";
 
 const pageExceptionStyle = {
-  height: '100%',
   width: '100%',
   display: 'flex',
   alignItems: 'center',
@@ -13,16 +14,21 @@ const pageExceptionStyle = {
 interface PageExceptionProps extends ResultProps {}
 
 const PageException: React.FC<PageExceptionProps> = props => {
+  const {pageCardMinHeight} = useModel('useGlobalSettingModel',model => ({
+    pageCardMinHeight:model.pageCardMinHeight
+  }))
   const state = { ...props };
   state.subTitle = state.subTitle ? (
     state.subTitle
   ) : (
-    <span>系统错误，请稍后再试或联系平台客服</span>
+    <span>系统错误，请稍后再试</span>
   );
   return (
-    <div style={pageExceptionStyle}>
+    <PageContainer>
+      <Card style={{...pageExceptionStyle,height:`${pageCardMinHeight}px`}}>
       <Result {...state} />
-    </div>
+      </Card>
+    </PageContainer>
   );
 };
 

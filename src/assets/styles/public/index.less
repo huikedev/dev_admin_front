@@ -53,9 +53,7 @@ html {
 .pd20 {
   padding: 20px;
 }
-.lineHegith {
-  line-height: 32px;
-}
+
 .flex {
   display: flex;
 }
@@ -98,6 +96,15 @@ html {
   display: flex;
   justify-content: end;
 }
+.spin{
+  height: 100%;
+}
+.flexAlignBetween{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 /**
 * 提示样式
 */
@@ -114,12 +121,16 @@ html {
 .textRed {
   color: @red;
 }
+.textBlue {
+  color: @blue;
+}
 .textGreen {
   color: @green;
 }
 .textOrange {
   color: @orange;
 }
+
 
 .textPass {
   color: #67c23a;
@@ -142,12 +153,22 @@ html {
 .textDesc {
   color: #8c8c8c;
 }
+
+.textLink{
+  color: @blue;
+  cursor: pointer;
+}
 //button样式
 
 .btnPass {
   border: 1px solid #52c41a;
   background: #52c41a;
   color: #ffffff;
+  &:hover {
+    border: 1px solid #52c41a;
+    background: #52c41a;
+    opacity: 0.8;
+  }
 }
 .btnWarning {
   border: 1px solid #ff5722;
@@ -160,12 +181,77 @@ html {
   }
 }
 
-//表格换行变色
-
-.light-row {
+.btnOutline{
+  color:@blue;
+  border: 1px solid @blue;
+  &:hover {
+    color: @white;
+    background: @blue;
+    opacity: 0.8;
+  }
 }
-.dark-row {
-  background: #f2f2f2;
+
+.btnGenerateOutline{
+  color:#2F4056;
+  border: 1px solid #2F4056;
+  &:hover,&:focus {
+    color: @white;
+    background: #2F4056;
+    border: 1px solid #2F4056;
+    opacity: 0.8;
+  }
+}
+
+.btnGreenOutline{
+  color:#5FB878;
+  border: 1px solid #5FB878;
+  &:hover,&:focus {
+    color: @white;
+    background: #5FB878;
+    border: 1px solid #5FB878;
+    opacity: 0.8;
+  }
+}
+
+.btnDeepGreenOutline{
+  color:#009688;
+  border: 1px solid #009688;
+  &:hover,&:focus {
+    color: @white;
+    background: #009688;
+    border: 1px solid #009688;
+    opacity: 0.8;
+  }
+}
+
+.btnInfoOutline{
+  color:#138496;
+  border: 1px solid #138496;
+  &:hover,&:focus {
+    color: @white;
+    background: #138496;
+    border: 1px solid #138496;
+    opacity: 0.8;
+  }
+}
+
+.btnWarningOutline{
+  color:#ff5722;
+  border: 1px solid #ff5722;
+  &:hover,&:focus {
+    color: @white;
+    background: #ff5722;
+    border: 1px solid #ff5722;
+    opacity: 0.8;
+  }
+}
+
+// 提示样式
+
+.huikePageAlert{
+  p{
+    margin-bottom: 5px;
+  }
 }
 
 //通用文字提示
@@ -182,8 +268,8 @@ html {
   border: 1px solid #bfbfbf;
 }
 
-/**字符长度**/
-.hiddenText1 {
+/** 字符长度 **/
+.hiddenText {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

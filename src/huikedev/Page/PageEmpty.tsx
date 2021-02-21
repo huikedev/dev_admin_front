@@ -1,9 +1,9 @@
 import React from 'react';
-import { Empty } from 'antd';
+import {Card, Empty} from 'antd';
 import { EmptyProps } from 'antd/lib/empty';
+import {useModel} from "umi";
 
 const pageEmptyStyle = {
-  height: '100%',
   width: '100%',
   display: 'flex',
   alignItems: 'center',
@@ -13,6 +13,9 @@ const pageEmptyStyle = {
 interface PageEmptyProps extends EmptyProps {}
 
 const PageEmpty: React.FC<PageEmptyProps> = props => {
+  const {pageCardMinHeight} = useModel('useGlobalSettingModel',model => ({
+    pageCardMinHeight:model.pageCardMinHeight
+  }))
   const state = { ...props };
   state.description = state.description ? (
     state.description
@@ -20,9 +23,9 @@ const PageEmpty: React.FC<PageEmptyProps> = props => {
     <span>未找到指定的数据</span>
   );
   return (
-    <div style={pageEmptyStyle}>
-      <Empty {...state} />
-    </div>
+      <Card style={{...pageEmptyStyle,height:`${pageCardMinHeight}px`}}>
+        <Empty {...state} />
+      </Card>
   );
 };
 

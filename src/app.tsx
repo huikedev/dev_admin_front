@@ -7,6 +7,7 @@ import {queryCurrent} from './services/user';
 import defaultSettings from '../config/defaultSettings';
 import {request as appRequestConfig} from '@/common/request'
 import AppUtils from "@/utils/AppUtils";
+import {DefaultUser} from "@/common/AppInitState";
 
 /**
  * 获取用户信息比较慢的时候会展示一个 loading
@@ -17,8 +18,8 @@ export const initialStateConfig = {
 
 export async function getInitialState(): Promise<{
   settings?: LayoutSettings;
-  currentUser?: API.CurrentUser;
-  fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
+  currentUser: API.DeveloperItem;
+  fetchUserInfo: () => Promise<API.DeveloperItem | undefined>;
 }> {
   const fetchUserInfo = async () => {
     try {
@@ -30,8 +31,6 @@ export async function getInitialState(): Promise<{
         history.push('/user/login');
         // eslint-disable-next-line consistent-return
         return ;
-
-
     } catch (error) {
       history.push('/user/login');
     }
@@ -39,23 +38,25 @@ export async function getInitialState(): Promise<{
   };
   // 如果是登录页面，不执行
   if (history.location.pathname !== '/user/login') {
-    const currentUser = await fetchUserInfo();
+    const userInfo = await fetchUserInfo();
     return {
       fetchUserInfo,
-      currentUser,
+      currentUser:typeof userInfo ==='undefined' ? DefaultUser : userInfo,
       settings: defaultSettings,
     };
   }
   return {
     fetchUserInfo,
+    currentUser:DefaultUser,
     settings: defaultSettings,
   };
 }
 
+
 export const layout = ({
   initialState,
 }: {
-  initialState: { settings?: LayoutSettings; currentUser?: API.CurrentUser };
+  initialState: { settings?: LayoutSettings; currentUser: API.DeveloperItem };
 }): BasicLayoutProps => {
   return {
     rightContentRender: () => <RightContent />,

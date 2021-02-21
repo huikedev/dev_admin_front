@@ -17,69 +17,114 @@
     component: './Welcome',
   },
   {
-    path: '/admin',
-    name: 'admin',
-    icon: 'crown',
-    //access: 'canAdmin',
-    component: './Admin',
-    routes: [
-      {
-        path: '/admin/sub-page',
-        name: 'sub-page',
-        icon: 'smile',
-        component: './Welcome',
-      },
-    ],
-  },
-  {
-    name: 'list.table-list',
-    icon: 'table',
-    path: '/list',
-    component: './ListTableList',
-  },
-  {
-    path: '/generate',
-    name: 'generate',
+    path: '/system',
+    name: 'system',
     icon: 'RobotOutlined',
-    //access: 'canAdmin',
-    component: '../layouts/index',
-    routes: [
+    routes:[
       {
-        path: '/generate/model',
-        name: 'model',
-        component: './generate/model/ModelList',
+        path: '/system/generate',
+        name: 'generate',
+        icon: 'RobotOutlined',
+        //access: 'canAdmin',
+        component: '../layouts/index',
+        routes: [
+          {
+            path: '/system/generate/model',
+            name: 'model',
+            component: './system/generate/model/ModelList',
+          },
+          {
+            path: '/system/generate/model/create',
+            name: 'model.create',
+            hideInMenu:true,
+            component: './system/generate/model/ModelCreate',
+          },
+          {
+            path: '/system/generate/model/fields_add/:id',
+            name: 'model.fields_add',
+            hideInMenu:true,
+            component: './system/generate/model/ModelFieldsAdd',
+          },
+          {
+            path: '/system/generate/facade',
+            name: 'facade',
+            component: './system/generate/facade/FacadeList',
+          },
+          {
+            path: '/system/generate/facade/create',
+            name: 'facade.create',
+            hideInMenu:true,
+            component: './system/generate/facade/FacadeCreate',
+          },
+        ],
       },
       {
-        path: '/generate/model/create',
-        name: 'model.create',
-        hideInMenu:true,
-        component: './generate/model/ModelCreate',
-      },
-      {
-        path: '/generate/facade',
-        name: 'facade',
-        component: './generate/facade/FacadeList',
-      },
-      {
-        path: '/generate/facade/create',
-        name: 'facade.create',
-        hideInMenu:true,
-        component: './generate/facade/FacadeCreate',
-      },
-      {
-        path: '/generate/logic',
+        path: '/system/logic',
         name: 'logic',
-        component: './generate/logic/LogicList',
+        routes:[
+          {
+            name: 'modules',
+            path: '/system/logic/modules',
+            component: './system/logic/modules/ModuleList',
+          },
+          {
+            name: 'modules.create',
+            path: '/system/logic/modules/create',
+            hideInMenu: true,
+            component: './system/logic/modules/ModuleCreate',
+          },
+          {
+            name: 'controllers',
+            path: '/system/logic/controllers',
+            component: './system/logic/controllers/ControllerList',
+            exact: true,
+          },
+          {
+            name: 'controllers.create',
+            path: '/system/logic/controllers/create',
+            hideInMenu: true,
+            component: './system/logic/controllers/ControllerCreate',
+          },
+          {
+            name: 'controllers.sync',
+            path: '/system/logic/controllers/sync',
+            hideInMenu: true,
+            component: './system/logic/controllers/ControllerSync',
+          },
+          {
+            name: 'actions',
+            path: '/system/logic/actions',
+            component: './system/logic/actions/ActionList',
+          },
+          {
+            name: 'actions.create',
+            path: '/system/logic/actions/create',
+            hideInMenu: true,
+            component: './system/logic/actions/ActionCreate',
+          },
+          {
+            name: 'actions.sync',
+            path: '/system/logic/actions/sync',
+            hideInMenu: true,
+            component: './system/logic/actions/ActionSync',
+          }
+        ]
       },
       {
-        path: '/generate/logic/create',
-        name: 'logic.create',
-        hideInMenu:true,
-        component: './generate/logic/LogicCreate',
-      },
+        path: '/system/developer',
+        name: 'developer',
+        routes: [
+          {
+            name: 'list',
+            path: '/system/developer/list',
+            component: './system/developer/DeveloperList',
+          },
+        ]
+      }
 
-    ],
+    ]
   },
+
   {
     path: '/',
     redirect: '/welcome',

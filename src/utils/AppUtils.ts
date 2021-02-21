@@ -107,4 +107,41 @@ export default class AppUtils{
     const index:number = lodash.findIndex(facadeOption,{id})
     return index === -1 ? '未知' :facadeOption[index].title
   }
+
+   /**
+   * 判断当前传入的值是否是空值, 下方是测试用例
+   * isEmpty()              //true
+   * isEmpty([])            //true
+   * isEmpty({})            //true
+   * isEmpty(0)             //true
+   * isEmpty(Number("abc")) //true
+   * isEmpty("")            //true
+   * isEmpty("   ")         //true
+   * isEmpty(false)         //true
+   * isEmpty(null)          //true
+   * isEmpty(undefined)     //true
+   * @param v
+   */
+  public static isEmpty(v: any): boolean {
+    switch (typeof v) {
+      case 'undefined':
+        return true;
+      case 'string':
+        if (v.replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length === 0)
+          return true;
+        break;
+      case 'boolean':
+        if (!v) return true;
+        break;
+      case 'number':
+        if ( v === 0 || Number.isNaN(v)) return true;
+        break;
+      case 'object':
+        if ( v === null || v.length === 0) return true;
+        return false;
+      default:
+        return true;
+    }
+    return false;
+  }
 }

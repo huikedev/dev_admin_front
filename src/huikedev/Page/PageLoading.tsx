@@ -1,19 +1,26 @@
 import React from 'react';
-import { Spin } from 'antd';
+import {Card, Spin} from 'antd';
+import {PageContainer} from "@ant-design/pro-layout";
+import {useModel} from "umi";
 
 const pageLoadingStyle = {
-  height: '100%',
   width: '100%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
 };
 
-const PageLoading: React.FC<{}> = () => {
+const PageLoading: React.FC = () => {
+  const {pageCardMinHeight} = useModel('useGlobalSettingModel',model => ({
+    pageCardMinHeight:model.pageCardMinHeight
+  }))
   return (
-    <div style={pageLoadingStyle}>
-      <Spin size="large" />
-    </div>
+    <PageContainer style={{height:'100%'}}>
+      <Card style={{...pageLoadingStyle,height:`${pageCardMinHeight}px`}}>
+        <Spin delay={50}  size="large" wrapperClassName="huike-spin"/>
+      </Card>
+
+    </PageContainer>
   );
 };
 

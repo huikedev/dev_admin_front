@@ -1,14 +1,16 @@
 export default class AppConfig{
 
-  public static devHost='http://core.local/'
+  public static devHost='http://huike.local/'
 
-  public static productionHost='http://core.local/'
+  public static productionHost='https://dev.api.huike.dev/'
 
   public static tokenName = 'authorization';
 
   public static tokenCacheName = 'authorization'
 
   public static localStoragePrefix = 'huike_'
+
+  public static version = '0.0.1-beta';
 
 }
 
