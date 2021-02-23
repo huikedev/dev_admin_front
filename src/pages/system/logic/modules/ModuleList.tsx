@@ -17,7 +17,7 @@ import {
 import { history, Link } from 'umi';
 import { ColumnsType } from 'antd/es/table';
 import { isNotEmpty } from '@/helpers';
-import { EmptyText, SmartTime, PageAlert } from '@/huikedev';
+import { EmptyText, SmartTime } from '@/huikedev';
 import publicStyle from '@/assets/styles/index.less';
 import { ModuleListData } from '@/models/useModuleModel';
 import {
@@ -266,16 +266,6 @@ const ModuleList: React.FC = () => {
     <PageContainer>
       <Card>
         <Space direction="vertical" size={20} style={{ width: '100%' }}>
-          <PageAlert
-            closable
-            message={
-              <p>
-                生成路由功能会<Text type="danger">删除</Text>对应的模块目录下的
-                <Text code>route.php</Text>文件并重新生成，为了性能考虑，请复制
-                <Text code>route.php</Text>下的路由规则到<Text code>/route/app.php</Text>
-              </p>
-            }
-          />
           <Button type="primary" onClick={() => history.push(PathName.modules.create)}>
             添加模块
           </Button>

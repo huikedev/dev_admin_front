@@ -40,7 +40,6 @@ export default class Apis {
     edit: 'system/modules/edit',
     simpleList: 'system/modules/simpleList',
     extendModules: 'system/modules/extendModules',
-    routeMiddlewares: 'system/modules/routeMiddlewares',
     refreshRoutes: 'system/modules/refreshRoutes',
     refreshException: 'system/modules/refreshException',
   };
@@ -54,7 +53,6 @@ export default class Apis {
     simpleList: 'system/controllers/simpleList',
     checkException: 'system/controllers/checkException',
     sync: 'system/controllers/sync',
-    pathList: 'system/controllers/pathList',
   };
 
   public static controllerPath = {

@@ -1,7 +1,7 @@
 export default class AppConfig {
   public static devHost = 'http://huike.local/';
 
-  public static productionHost = 'https://dev.api.huike.dev/';
+  public static productionHost = '';
 
   public static tokenName = 'authorization';
 
@@ -9,9 +9,7 @@ export default class AppConfig {
 
   public static localStoragePrefix = 'huike_';
 
-  public static version = '0.0.1-beta';
-
-  public static edit_level = 2;
+  public static version = '1.0.0';
 }
 
 export const baseUri = () => {

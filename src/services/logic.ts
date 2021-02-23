@@ -24,11 +24,6 @@ export async function getModuleSimpleList(): Promise<AppResponseType<API.ModuleS
   return request(Apis.module.simpleList);
 }
 
-// 获取 路由中间件列表
-export async function getRouteMiddlewares(): Promise<AppResponseType> {
-  return request(Apis.module.routeMiddlewares);
-}
-
 // 获取 第三方模块列表
 export async function getExtendModules(): Promise<AppResponseType<API.ModuleWithExtend[]>> {
   return request(Apis.module.extendModules);

@@ -14,13 +14,13 @@ export default () => (
       {
         key: 'github',
         title: 'Github',
-        href: 'https://github.com/huikedev/dev_admin',
+        href: 'https://github.com/huikedev',
         blankTarget: true,
       },
       {
         key: 'gitee',
         title: 'Gitee',
-        href: 'https://gitee.com/huikedev/dev_admin',
+        href: 'https://gitee.com/huikedev',
         blankTarget: true,
       },
     ]}
