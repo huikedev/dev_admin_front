@@ -186,3 +186,8 @@ export const SpeedActions = [
     remind_msg: '',
   },
 ];
+
+export const editLevels = [
+  { value: 0, label: '任意使用者' },
+  { value: 21, label: '模块开发者' },
+];
